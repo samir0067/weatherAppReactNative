@@ -4,18 +4,13 @@ import {Text, View, StyleSheet, ActivityIndicator} from 'react-native'
 export default class About extends Component {
     render() {
         return (
-            <View style={styleAbout.view}>
-                <Text style={styleAbout.title}>A propos de moi</Text>
+            <View style={sAbout.view}>
+                <Text style={sAbout.title}>A propos de moi</Text>
                 <Text>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Assumenda officia reiciendis tenetur? Culpa dolore facilis magnam necessitatibus odit sed suscipit.
                 </Text>
                 <View style={sAbout.layoutView}>
-                    <ActivityIndicator
-                        style={sAbout.back}
-                        color='green'
-                        size='large'
-                    />
                     <ActivityIndicator
                         style={sAbout.back}
                         color='green'
@@ -29,7 +24,7 @@ export default class About extends Component {
 
 const sAbout = StyleSheet.create({
     view: {
-        margin: 25
+        margin: 25,
     },
     title: {
         fontSize: 30,
@@ -41,6 +36,8 @@ const sAbout = StyleSheet.create({
     },
     layoutView: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        marginTop: 15
+
     }
 })

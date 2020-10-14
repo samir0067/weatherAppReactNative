@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import {View, TextInput, StyleSheet, onChangeText} from 'react-native';
+import {View, TextInput, StyleSheet} from 'react-native';
 
-export default class Home extends Component {
+export default class Search extends Component {
 
     constructor(props) {
         super(props)
@@ -10,9 +10,7 @@ export default class Home extends Component {
         }
     }
 
-    setCity (city) {
-        this.setState({city})
-    }
+    setCity (city) { this.setState({city: city}) }
 
     render() {
         return (
