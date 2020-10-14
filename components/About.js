@@ -5,10 +5,11 @@ export default class About extends Component {
     render() {
         return (
             <View style={sAbout.view}>
-                <Text style={sAbout.title}>A propos de moi</Text>
+                <Text style={sAbout.title}>about the app </Text>
                 <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Assumenda officia reiciendis tenetur? Culpa dolore facilis magnam necessitatibus odit sed suscipit.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, magnam voluptatibus.
+                    Id illum ipsam modi nesciunt officiis quas similique! Ad dolore impedit totam? Cupiditate eum
+                    fugit minus quo ratione recusandae totam vitae. Laborum, magnam quibusdam.
                 </Text>
                 <View style={sAbout.layoutView}>
                     <ActivityIndicator

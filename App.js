@@ -1,21 +1,23 @@
 import React, {Component} from 'react'
-import {StyleSheet} from 'react-native'
+import {StyleSheet, View, StatusBar} from 'react-native'
 import About from './components/About'
 import Search from './components/Search'
+import Home from './components/Home'
 import Icon from '@expo/vector-icons/Ionicons'
 import {
-    createSwitchNavigator,
     createAppContainer,
     createDrawerNavigator,
     createBottomTabNavigator,
     createStackNavigator
 } from 'react-navigation'
 
-const TabsBottomNavigator = createBottomTabNavigator({
+const BottomNavigator = createBottomTabNavigator({
+        Home,
         About,
-        Search
+        Search,
     },
     {
+        initialRouteName: 'Home',
         navigationOptions: ({navigation}) => {
             const {routeName} = navigation.state.routes
                 [navigation.state.index]
@@ -25,14 +27,15 @@ const TabsBottomNavigator = createBottomTabNavigator({
         }
     })
 
-const TabsStackNavigator = createStackNavigator({
-        TabsBottomNavigator: TabsBottomNavigator
+const StackNavigator = createStackNavigator({
+        BottomNavigator: BottomNavigator
     },
     {
+        cardStyle: {backgroundColor: '#c3ffc3'},
         defaultNavigationOptions: ({navigation}) => {
             return {
                 headerRight: <Icon
-                    onPress={() => navigation.openDrawer()}
+                    onPress={() => navigation.toggleDrawer()}
                     style={styles.iconMenu}
                     name="md-menu"
                     size={30}
@@ -41,18 +44,25 @@ const TabsStackNavigator = createStackNavigator({
         }
     })
 
-const TabsDrawerNavigator = createDrawerNavigator({
-    Search: {screen: TabsStackNavigator}
-})
-const TabsNavigator = createSwitchNavigator({
-    Search: {screen: TabsDrawerNavigator},
-    About: {screen: About},
-})
-const TabsContainer = createAppContainer(TabsNavigator)
+const DrawerNavigator = createDrawerNavigator({
+    Home: {screen: StackNavigator},
+    About: {screen: StackNavigator},
+    Search: {screen: StackNavigator},
+},
+    {
+        drawerBackgroundColor: 'rgb(137,146,137)',
+        overlayColor: 'rgb(64,67,64)',
+        contentOptions: {
+            activeTintColor: '#fff',
+            activeBackgroundColor: '#616185',
+        }
+    })
+
+const AppContainer = createAppContainer(DrawerNavigator)
+
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#c3ffc3',
     },
     iconMenu: {
@@ -60,10 +70,15 @@ const styles = StyleSheet.create({
     }
 })
 
+
+
 export default class App extends Component {
     render() {
         return (
-            <TabsContainer/>
+            <View style={{ flex: 1 }}>
+                {/*<StatusBar hidden={true}/>*/}
+                <AppContainer/>
+            </View>
         )
     }
 }
