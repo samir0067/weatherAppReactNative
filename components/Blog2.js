@@ -1,48 +1,44 @@
 import React, {Component} from 'react'
 import {Text, View, StyleSheet, Button} from 'react-native'
 
-export default class Home extends Component {
+export default class Blog2 extends Component {
   render() {
     return (
       <>
-        <View style={sHome.buttonStyle}>
+        <View style={sBlog2.buttonStyle}>
           <Button
             title="À propos"
-            onPress={() => this.props.navigation.navigate('About', { name: 'En-tête personnalisé' })}
+            onPress={() => this.props.navigation.navigate('About', { name: 'En-tête de à propos personnalisé' })}
           />
           <Button
             title="Recherchez"
             onPress={() => this.props.navigation.navigate('Search')}
           />
           <Button
-            title="Blog"
-            onPress={() => this.props.navigation.navigate('Blog')}
-          />
-          <Button
-            title="Blog2"
-            onPress={() => this.props.navigation.navigate('Blog2')}
+            title="Mettre à jour le titre"
+            onPress={() => this.props.navigation.setOptions({ title: 'Mise à jour!' })}
           />
         </View>
-        <View style={sHome.view}>
-          <Text style={sHome.title}>Accueil</Text>
-          <Text style={sHome.text}>
+        <View style={sBlog2.view}>
+          <Text style={sBlog2.title}>Articles 2</Text>
+          <Text style={sBlog2.text}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, dolorem quasi.
           </Text>
-          <Text style={sHome.text}>
+          <Text style={sBlog2.text}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias architecto assumenda consectetur, consequatur cumque doloremque eligendi
             ex, facilis ipsam itaque labore laboriosam magnam minima minus nihil perferendis perspiciatis praesentium repudiandae saepe sequi sit
             veniam
             voluptatem! A adipisci aspernatur at dicta dolore ea et eum ipsa laborum nobis odit officiis, pariatur quae recusandae temporibus totam
             voluptatem voluptatibus. Voluptatem!
           </Text>
-          <Text style={sHome.text}>
+          <Text style={sBlog2.text}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias architecto assumenda consectetur, consequatur cumque doloremque eligendi
             ex, facilis ipsam itaque labore laboriosam magnam minima minus nihil perferendis perspiciatis praesentium repudiandae saepe sequi sit
             veniam
             voluptatem! A adipisci aspernatur at dicta dolore ea et eum ipsa laborum nobis odit officiis, pariatur quae recusandae temporibus totam
             voluptatem voluptatibus. Voluptatem!
           </Text>
-          <Text style={sHome.text}>
+          <Text style={sBlog2.text}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, dolorem quasi.
           </Text>
         </View>
@@ -51,7 +47,7 @@ export default class Home extends Component {
   }
 }
 
-const sHome = StyleSheet.create({
+const sBlog2 = StyleSheet.create({
   view: {
     flex: 1,
     alignItems: 'center',

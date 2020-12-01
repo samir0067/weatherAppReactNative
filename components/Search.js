@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import {View, Text, TextInput, StyleSheet, Button} from 'react-native';
 
 export default class Search extends Component {
 
@@ -16,13 +16,26 @@ export default class Search extends Component {
 
   render() {
     return (
-      <View style={sSearch.view}>
-        <TextInput
-          style={sSearch.input}
-          value={this.state.city}
-          onChangeText={(text) => this.setCity(text)}
-        />
-      </View>
+      <>
+        <View style={sSearch.buttonStyle}>
+          <Button
+            title="Recherchez a nouveaux"
+            onPress={() => this.props.navigation.push('Search')}
+          />
+          <Button
+            title="Accueil"
+            onPress={() => this.props.navigation.navigate('Home')}
+          />
+        </View>
+        <View style={sSearch.view}>
+          <Text style={{ color: '#fff' }}>Recherchez une ville</Text>
+          <TextInput
+            style={sSearch.input}
+            value={this.state.city}
+            onChangeText={(text) => this.setCity(text)}
+          />
+        </View>
+      </>
     )
   }
 }
@@ -41,5 +54,10 @@ const sSearch = StyleSheet.create({
     paddingLeft: 10,
     marginVertical: 10,
     marginHorizontal: 10,
+  },
+  buttonStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   }
 })
