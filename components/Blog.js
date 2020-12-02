@@ -1,26 +1,33 @@
 import React, {Component, useLayoutEffect, useState} from 'react'
 import {Text, View, StyleSheet, Button} from 'react-native'
+import {useNavigation, useRoute} from "@react-navigation/native";
 
-const counter = () => {
-  const [count, setCount] = useState(0)
 
-  useLayoutEffect(() => {
-    this.props.navigation.setOptions({
-      headerRight: () => (
-        <Button onPress={() => setCount(c => c + 1)} title="Update count"/>
-      ),
-    })
-  }, [this.props.navigation, setCount])
-  return counter
-}
 
+// const counter = () => {
+//   const [count, setCount] = useState(0)
+//
+//   useLayoutEffect(() => {
+//     this.props.navigation.setOptions({
+//       headerRight: () => (
+//         <Button onPress={() => setCount(c => c + 1)} title="Update count"/>
+//       ),
+//     })
+//   }, [this.props.navigation, setCount])
+//   return counter
+// }
+const route = useRoute()
+const navigation = useNavigation()
+const params = route.params
 
 export default class Blog extends Component {
+
+
 
   render() {
     return (
       <>
-        <Text>Count: {counter}</Text>;
+        <Text>Count: {count}</Text>;
 
         <View style={sBlog.buttonStyle}>
           <Button title="Retour en arrière" onPress={() => this.props.navigation.goBack()}/>

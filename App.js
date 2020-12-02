@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler'
-import React, {Component} from 'react'
-import {NavigationContainer} from '@react-navigation/native'
+import React, {Component, useLayoutEffect, useState} from 'react'
+import {NavigationContainer, useNavigation, useRoute} from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { Button, StatusBar, Image } from 'react-native'
 import About from './components/About'
@@ -16,17 +16,18 @@ const LogoTitle = () => {
 }
 
 const Stack = createStackNavigator()
-
+const [count, setCount] = useState(0)
 // const counter = () => {
-//   const [count, setCount] = React.useState(0)
+//   const [count, setCount] = useState(0)
 //
-//   React.useLayoutEffect(() => {
+//   useLayoutEffect(() => {
 //     this.props.navigation.setOptions({
 //       headerRight: () => (
 //         <Button onPress={() => setCount(c => c + 1)} title="Update count"/>
 //       ),
 //     })
 //   }, [this.props.navigation, setCount])
+//   return counter
 // }
 
 export default class App extends Component {
@@ -75,7 +76,15 @@ export default class App extends Component {
           <Stack.Screen
             name="Blog"
             component={Blog}
-            options={({ navigation, route }) => ({ title: 'Articles'})}
+            options={({ navigation }) => ({ title: 'Articles'},
+                useLayoutEffect(() => {
+                  navigation.setOptions({
+                    headerRight: () => (
+                      <Button onPress={() => setCount(c => c + 1)} title="Update count"/>
+                    ),
+                  })
+                }, [navigation, setCount])
+            )}
           />
           <Stack.Screen
             name="Blog2"
